@@ -6,19 +6,19 @@
 
 {% block content %}
 <p>
-    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}">新增条目</a>
 </p>
 {% for entry in entries %}
 <div class="card mb-3">
     <h4 class="card-header">
-        {{ entry.date_added|date:'M d, Y H:i' }}
-        <small><a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a></small>
+        {{ entry.date_added|date:'Y-m-d H:i' }}
+        <small><a href="{% url 'learning_logs:edit_entry' entry.id %}">修改</a></small>
     </h4>
     <div class="card-body">
         {{ entry.text|linebreaks }}
     </div>
 </div>
 {% empty %}
-<p>There are no entries for this topic yet.</p>
+<p>这个主题还没有添加条目呢！</p>
 {% endfor %}
 {% endblock content %}
